@@ -1,9 +1,6 @@
-import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './style.scss';
 
-let num = 0;
-num = setInterval(() => {
-  // eslint-disable-next-line no-plusplus
-  num++;
-  $('#main').html(`You've been on this page for ${num} seconds.`);
-}, 1000);
+const App = () => <div className="test">All the REACT belong to us!</div>;
+ReactDOM.render(<App />, document.getElementById('main'));
