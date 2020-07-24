@@ -17,16 +17,15 @@ class Note extends Component {
   }
 
   handleDrag = (event, data) => {
-    this.props.update(this.props.id, { x: data.x });
-    this.props.update(this.props.id, { y: data.y });
+    this.props.update(this.props.id, 'position', [data.x, data.y]);
   }
 
   changeTitle = (event) => {
-    this.props.update(this.props.id, { title: event.target.value });
+    this.props.update(this.props.id, 'title', event.target.value);
   }
 
   changeText = (event) => {
-    this.props.update(this.props.id, { text: event.target.value });
+    this.props.update(this.props.id, 'text', event.target.value);
   }
 
   toggleEditing = (event) => {
@@ -42,7 +41,7 @@ class Note extends Component {
       return (
         <div className="note-box">
           <div className="note-header">
-            <input onChange={this.changeTitle} placeholder={this.props.note.title} />
+            <input onChange={this.changeTitle} value={this.props.note.title} />
             <div className="note-icons">
               <i onClick={this.onTrashClick} className="fas fa-trash" />
               <i onClick={this.toggleEditing} className="fas fa-check-square" />
@@ -52,7 +51,7 @@ class Note extends Component {
             </div>
           </div>
           <div className="note-text">
-            <textarea onChange={this.changeText} placeholder={this.props.note.text} />
+            <textarea onChange={this.changeText} value={this.props.note.text} />
           </div>
         </div>
       );
@@ -81,11 +80,14 @@ class Note extends Component {
     return (
       <Draggable
         handle=".drag-icon"
-        defaultposition={{ x: 20, y: 20 }}
         position={{ x: this.props.note.x, y: this.props.note.y }}
         onStart={this.handleStartDrag}
         onDrag={this.handleDrag}
         onStop={this.handleStopDrag}
+        bounds={{
+          top: 0, left: 0,
+        }}
+        axis="both"
       >
         <div>
           {this.renderNote()}

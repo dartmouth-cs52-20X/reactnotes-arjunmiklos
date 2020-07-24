@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// Modeled of the searchbar from SA4
+
 class CreateBar extends Component {
   constructor(props) {
     super(props);
