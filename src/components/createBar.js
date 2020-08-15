@@ -15,7 +15,14 @@ class CreateBar extends Component {
 
   addNote = (event) => {
     event.preventDefault();
-    this.props.add(this.state.workingTitle);
+    const newNote = {
+      title: this.state.workingTitle,
+      text: '',
+      x: 400,
+      y: 12,
+      zIndex: 26,
+    };
+    this.props.add(newNote);
     this.setState({ workingTitle: '' });
   }
 
