@@ -1,11 +1,3 @@
-# Title
+# Refactored with websockets
 
-*description*
-
-[deployed url](http://url-if-deployed-here)
-
-## What Worked Well
-
-## What Didn't
-
-## Screenshots
+*Built a backend for the app, now don't have to use Firebase*
